@@ -15,14 +15,14 @@
                 <Button fx:id="openButton" mnemonicParsing="false" onAction="#openButtonPressed" text="Open..." />
               </items>
             </ToolBar>
-            <Canvas height="320.0" width="480.0">
+            <Canvas fx:id="targetsCanvas" height="320.0" width="480.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </Canvas>
             <ToolBar prefHeight="25.0" prefWidth="200.0">
                <items>
-                  <Label prefHeight="17.0" prefWidth="465.0" />
+                  <Label fx:id="statusText" prefHeight="17.0" prefWidth="465.0" />
                </items>
             </ToolBar>
          </children>
