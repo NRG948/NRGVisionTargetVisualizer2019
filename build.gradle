@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'com.github.johnrengelman.shadow' version '4.0.3' apply false
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs '/usr/local/frc/java', '.'
+    }
+}
+
+javafx {
+    modules = [
+        'javafx.base',
+        'javafx.controls',
+        'javafx.fxml',
+        'javafx.graphics'
+    ]
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.5'
+    compile name: 'opencv-344'
+}
+
+// Define the main class for the application
+mainClassName = 'org.nrg948.vision.visualizer.App'

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nrg948.vision.visualizer.AppController">
+   <children>
+      <VBox layoutX="8.0" layoutY="7.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ToolBar prefHeight="40.0">
+              <items>
+                <Button fx:id="openButton" mnemonicParsing="false" onAction="#openButtonPressed" text="Open..." />
+              </items>
+            </ToolBar>
+            <Canvas height="320.0" width="480.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Canvas>
+            <ToolBar prefHeight="25.0" prefWidth="200.0">
+               <items>
+                  <Label prefHeight="17.0" prefWidth="465.0" />
+               </items>
+            </ToolBar>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
