@@ -75,7 +75,7 @@ public class AppController extends AnchorPane {
     var gc = this.targetsCanvas.getGraphicsContext2D();
 
     gc.setFill(Color.BLACK);
-    gc.fill();
+    gc.fillRect(0, 0, this.targetsCanvas.getWidth(), this.targetsCanvas.getHeight());
 
     drawTargetPairs(gc);
     drawCenterDot(gc);
