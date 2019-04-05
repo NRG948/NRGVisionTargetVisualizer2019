@@ -32,18 +32,23 @@ import javafx.stage.FileChooser.ExtensionFilter;
  */
 public class AppController extends AnchorPane {
 
-    @FXML private Button openButton;
-    @FXML private Label statusText;
-    @FXML private Canvas targetsCanvas;
+    @FXML
+    private Button openButton;
+    @FXML
+    private Label statusText;
+    @FXML
+    private Canvas targetsCanvas;
 
     private Gson gson = new Gson();
     private ArrayList<TargetPair> targetPairs = new ArrayList<TargetPair>();
 
-    @FXML public void initialize() {
+    @FXML
+    public void initialize() {
         statusText.setText("Press Open... to open a file.");
     }
 
-    @FXML public void openButtonPressed(ActionEvent event) {
+    @FXML
+    public void openButtonPressed(ActionEvent event) {
         try {
             FileChooser fileChooser = new FileChooser();
 
@@ -53,21 +58,22 @@ public class AppController extends AnchorPane {
 
             if (targetsFile != null) {
                 readTargetPairs(targetsFile);
-                drawTargetPairs();
-            }
 
-            updateTargetsCanvas();
-        }
-        catch (IOException ioException) {
+                updateTargetsCanvas();
+
+                // App.getMainStage().setTitle("NRG948 Targets Visualizer - " + targetsFile.getName());
+                this.statusText.setText(this.targetPairs.size() + " target pairs found.");
+            }
+        } catch (IOException ioException) {
             statusText.setText("ERROR: " + ioException.getMessage());
         }
     }
 
-	private void readTargetPairs(File targetsFile) throws IOException {
-		var newTargets = new ArrayList<TargetPair>();
+    private void readTargetPairs(File targetsFile) throws IOException {
+        var newTargets = new ArrayList<TargetPair>();
 
-		try (var reader = Files.newBufferedReader(targetsFile.toPath())) {
-		    newTargets.add(gson.fromJson(reader.readLine(), TargetPair.class));
+        try (var reader = Files.newBufferedReader(targetsFile.toPath())) {
+            newTargets.add(gson.fromJson(reader.readLine(), TargetPair.class));
         }
 
         this.targetPairs = newTargets;
@@ -78,7 +84,7 @@ public class AppController extends AnchorPane {
 
         context.setFill(Color.BLACK);
         context.fill();
-        
+
         drawTargetPairs();
         drawCenterDot();
     }
@@ -93,13 +99,11 @@ public class AppController extends AnchorPane {
     private void drawTarget(Target target, Color color) {
         var context = this.targetsCanvas.getGraphicsContext2D();
 
-        double [] xPoints = new double[] {
-            target.getMinX().x, target.getMinX().x, target.getMinY().x, target.getMaxY().x
-        };
+        double[] xPoints = new double[] { target.getMinX().x, target.getMinX().x, target.getMinY().x,
+                target.getMaxY().x };
 
-        double [] yPoints = new double[] {
-            target.getMinX().y, target.getMinX().y, target.getMinY().y, target.getMaxY().y
-        };
+        double[] yPoints = new double[] { target.getMinX().y, target.getMinX().y, target.getMinY().y,
+                target.getMaxY().y };
 
         context.setFill(color);
         context.fillPolygon(xPoints, yPoints, 4);
@@ -109,6 +113,6 @@ public class AppController extends AnchorPane {
         var context = this.targetsCanvas.getGraphicsContext2D();
 
         context.setFill(Color.GREEN);
-        context.fillOval(this.targetsCanvas.getWidth()/2, this.targetsCanvas.getHeight()/2, 5, 5);
+        context.fillOval(this.targetsCanvas.getWidth() / 2, this.targetsCanvas.getHeight() / 2, 5, 5);
     }
 }
