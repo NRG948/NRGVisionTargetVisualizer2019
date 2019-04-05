@@ -79,6 +79,7 @@ public class AppController extends AnchorPane {
 
     drawTargetPairs(gc);
     drawCenterDot(gc);
+    drawCenterOfClosestTarget(gc);
   }
 
   private void drawTargetPairs(GraphicsContext gc) {
@@ -87,18 +88,26 @@ public class AppController extends AnchorPane {
       drawTarget(gc, targetPair.right, Color.BLUE);
     }
   }
-
+  
+  
   private void drawTarget(GraphicsContext gc, Target target, Color color) {
     double[] xPoints = new double[] { target.getMinX().x, target.getMinX().x, target.getMinY().x, target.getMaxY().x };
-
-    double[] yPoints = new double[] { target.getMinX().y, target.getMinX().y, target.getMinY().y, target.getMaxY().y };
+    
+    double[] yPoints = new double[] { -target.getMinX().y, -target.getMinX().y, -target.getMinY().y, -target.getMaxY().y };
 
     gc.setFill(color);
     gc.fillPolygon(xPoints, yPoints, 4);
   }
-
+  
   private void drawCenterDot(GraphicsContext gc) {
     gc.setFill(Color.GREEN);
     gc.fillOval(this.targetsCanvas.getWidth() / 2, this.targetsCanvas.getHeight() / 2, 5, 5);
+  }
+
+  private void drawCenterOfClosestTarget(GraphicsContext gc) {
+    var center = this.targets.getCenterOfTargets();
+
+    gc.setStroke(Color.PURPLE);
+    gc.strokeOval(center.x, center.y, 10, 10);
   }
 }
