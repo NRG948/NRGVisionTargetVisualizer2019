@@ -20,10 +20,10 @@ public class App extends Application {
     public void start(Stage mainStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("App.fxml"));
 
-        mainStage = mainStage;
-        mainStage.setTitle("NRG948 Vision Targets Visualizer");
-        mainStage.setScene(new Scene(root));
-        mainStage.show();
+        App.mainStage = mainStage;
+        App.mainStage.setTitle("NRG948 Vision Targets Visualizer");
+        App.mainStage.setScene(new Scene(root));
+        App.mainStage.show();
     }
 
     public static void main(String[] args) {

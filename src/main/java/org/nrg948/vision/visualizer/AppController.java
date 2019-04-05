@@ -61,7 +61,7 @@ public class AppController extends AnchorPane {
 
                 updateTargetsCanvas();
 
-                // App.getMainStage().setTitle("NRG948 Targets Visualizer - " + targetsFile.getName());
+                App.getMainStage().setTitle("NRG948 Targets Visualizer - " + targetsFile.getName());
                 this.statusText.setText(this.targetPairs.size() + " target pairs found.");
             }
         } catch (IOException ioException) {
