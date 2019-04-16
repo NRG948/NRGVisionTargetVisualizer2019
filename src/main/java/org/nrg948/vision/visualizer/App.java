@@ -26,7 +26,8 @@ public class App extends Application {
         App.mainStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch();
+        AppConfiguration.save();
     }
 }
